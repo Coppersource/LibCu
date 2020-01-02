@@ -1,0 +1,69 @@
+{
+    "fileName": "LibCu.json",
+    "name": "LibCu",
+    "version": "2020.1.1",
+    "uuid": "libcufrc-e6e8-4db6-89f0-copperforge0", 
+    "mavenUrls": [
+        "C:/Users/[USERNAME]/.m2/repository/",
+        "https://copperforge.cc/dev/maven"
+    ],
+    "jsonUrl": "https://copperforge.cc/dev/maven/com/cuforge/libcu/LibCu-latest.json",
+    "cppDependencies": [
+        {
+            "groupId": "com.cuforge.libcu",
+            "artifactId": "LibCu-cpp",
+            "version": "2020.1.1",
+            "libName": "Cu",
+            "headerClassifier": "headers",
+            "sharedLibrary": true,
+            "skipInvalidPlatforms": true,
+            "binaryPlatforms": [
+                "linuxx86-64",
+                "windowsx86-64",
+                "osxx86-64",
+                "linuxathena",
+                "linuxraspbian"
+            ]
+        },
+        {
+            "groupId": "com.cuforge.libcu",
+            "artifactId": "LibCu-driver",
+            "version": "2020.1.1",
+            "libName": "CuDriver",
+            "headerClassifier": "headers",
+            "sharedLibrary": true,
+            "skipInvalidPlatforms": true,
+            "binaryPlatforms": [
+                "linuxx86-64",
+                "windowsx86-64",
+                "osxx86-64",
+                "linuxathena",
+                "linuxraspbian"
+            ]
+        }
+    ],
+    "javaDependencies": [
+        {
+            "groupId": "com.cuforge.libcu",
+            "artifactId": "LibCu-java",
+            "version": "2020.1.1"
+        }
+    ],
+    "jniDependencies": [
+        {
+            "groupId": "com.cuforge.libcu",
+            "artifactId": "LibCu-driver",
+            "version": "2020.1.1",
+            "isJar": true,
+            "skipInvalidPlatforms": true,
+            "validPlatforms": [
+                "linuxx86-64",
+                "windowsx86-64",
+                "osxx86-64",
+                "linuxathena",
+                "linuxraspbian"
+            ]
+        }
+    ]
+}
+

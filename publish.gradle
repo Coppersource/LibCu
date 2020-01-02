@@ -2,7 +2,7 @@ apply plugin: 'maven-publish'
 
 ext.licenseFile = files("$rootDir/LICENSE.txt")
 
-def pubVersion = '0.0.1'
+def pubVersion = '2020.1.1'
 
 def outputsFolder = file("$buildDir/allOutputs")
 
@@ -40,11 +40,11 @@ ext.addTaskToCopyAllOutputs = { task ->
     copyAllOutputs.from task.archivePath
 }
 
-def artifactGroupId = 'com.cuforge.frc'
+def artifactGroupId = 'com.cuforge.libcu'
 def baseArtifactId = 'LibCu'
-def driverZipBaseName = "_GROUP_com_cuforge_frc_ID_${baseArtifactId}-driver_CLS"
-def zipBaseName = "_GROUP_com_cuforge_frc_ID_${baseArtifactId}-cpp_CLS"
-def javaBaseName = "_GROUP_com_cuforge_frc_ID_${baseArtifactId}-java_CLS"
+def driverZipBaseName = "_GROUP_com_cuforge_libcu_ID_${baseArtifactId}-driver_CLS"
+def zipBaseName = "_GROUP_com_cuforge_libcu_ID_${baseArtifactId}-cpp_CLS"
+def javaBaseName = "_GROUP_com_cuforge_libcu_ID_${baseArtifactId}-java_CLS"
 
 task cppHeadersZip(type: Zip) {
     destinationDirectory = outputsFolder
