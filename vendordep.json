@@ -4,10 +4,10 @@
     "version": "2020.1.1",
     "uuid": "libcufrc-e6e8-4db6-89f0-copperforge0", 
     "mavenUrls": [
-        "C:/Users/[USERNAME]/.m2/repository/",
-        "https://copperforge.cc/dev/maven"
+        "https://copperforge.cc/dev/maven",
+        "C:/Users/[USERNAME]/.m2/repository/"
     ],
-    "jsonUrl": "https://copperforge.cc/dev/maven/com/cuforge/libcu/LibCu-latest.json",
+    "jsonUrl": "https://copperforge.cc/dev/maven/LibCu-latest.json",
     "cppDependencies": [
         {
             "groupId": "com.cuforge.libcu",
@@ -16,7 +16,7 @@
             "libName": "Cu",
             "headerClassifier": "headers",
             "sharedLibrary": true,
-            "skipInvalidPlatforms": true,
+            "skipInvalidPlatforms": false,
             "binaryPlatforms": [
                 "linuxx86-64",
                 "windowsx86-64",
@@ -32,7 +32,7 @@
             "libName": "CuDriver",
             "headerClassifier": "headers",
             "sharedLibrary": true,
-            "skipInvalidPlatforms": true,
+            "skipInvalidPlatforms": false,
             "binaryPlatforms": [
                 "linuxx86-64",
                 "windowsx86-64",
@@ -54,7 +54,7 @@
             "groupId": "com.cuforge.libcu",
             "artifactId": "LibCu-driver",
             "version": "2020.1.1",
-            "isJar": true,
+            "isJar": false,
             "skipInvalidPlatforms": true,
             "validPlatforms": [
                 "linuxx86-64",
