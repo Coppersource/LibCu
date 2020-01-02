@@ -3,9 +3,9 @@ plugins {
   id 'cpp'
   id 'java'
   id 'edu.wpi.first.wpilib.repositories.WPILibRepositoriesPlugin' version '2020.2'
-  id 'edu.wpi.first.NativeUtils' version  '2020.5.2' //'2019.5.15' //'2020.1.0'
+  id 'edu.wpi.first.NativeUtils' version  '2020.7.2' //'2019.5.15' //'2020.1.0'
   id 'edu.wpi.first.GradleJni' version '0.10.1'
-  id 'edu.wpi.first.GradleVsCode' version '0.10.0'
+  id 'edu.wpi.first.GradleVsCode' version '0.12.0'
 }
 
 repositories {
@@ -23,12 +23,12 @@ apply from: 'config.gradle'
 
 // Apply Java configuration
 dependencies {
-    implementation 'edu.wpi.first.cscore:cscore-java:2020.1.1-beta-2-56-g1853f7b'
-    implementation 'edu.wpi.first.cameraserver:cameraserver-java:2020.1.1-beta-2-56-g1853f7b'
-    implementation 'edu.wpi.first.ntcore:ntcore-java:2020.1.1-beta-2-56-g1853f7b'
-    implementation 'edu.wpi.first.wpilibj:wpilibj-java:2020.1.1-beta-2-56-g1853f7b'
-    implementation 'edu.wpi.first.wpiutil:wpiutil-java:2020.1.1-beta-2-56-g1853f7b'
-    implementation 'edu.wpi.first.hal:hal-java:2020.1.1-beta-2-56-g1853f7b'
+    implementation 'edu.wpi.first.cscore:cscore-java:2020.+'
+    implementation 'edu.wpi.first.cameraserver:cameraserver-java:2020.+'
+    implementation 'edu.wpi.first.ntcore:ntcore-java:2020.+'
+    implementation 'edu.wpi.first.wpilibj:wpilibj-java:2020.+'
+    implementation 'edu.wpi.first.wpiutil:wpiutil-java:2020.+'
+    implementation 'edu.wpi.first.hal:hal-java:2020.+'
     implementation 'edu.wpi.first.thirdparty.frc2020.opencv:opencv-java:3.4.7-2'
 }
 
