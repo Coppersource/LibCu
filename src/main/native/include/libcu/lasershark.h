@@ -18,7 +18,7 @@ public:
     Lasershark(Lasershark&&) = default;
     Lasershark& operator=(Lasershark&&) = default;
 
-    units::meter_t GetDistance();
+    units::foot_t GetDistance();
     
 protected:
     void InitSendable(frc::SendableBuilder& builder) override;

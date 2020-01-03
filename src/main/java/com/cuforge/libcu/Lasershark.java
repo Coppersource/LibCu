@@ -11,6 +11,7 @@ public class Lasershark implements Sendable {
 
     private DutyCycle _pwmInput;
 
+
     public Lasershark(int input) {
         this._pwmInput = new DutyCycle(new DigitalInput(input));
         SendableRegistry.addLW(this, "Lasershark", _pwmInput.getFPGAIndex() + 1);
@@ -18,6 +19,7 @@ public class Lasershark implements Sendable {
 
     public Lasershark(DigitalSource source) {
         this._pwmInput = new DutyCycle(source);
+        SendableRegistry.addLW(this, "Lasershark", _pwmInput.getFPGAIndex() + 1);
     }
 
     public double getDistanceFeet() {
@@ -39,6 +41,6 @@ public class Lasershark implements Sendable {
     @Override
     public void initSendable(SendableBuilder builder) {
         builder.setSmartDashboardType("Lasershark");
-        builder.addDoubleProperty("Distance", this::getDistanceMeters, null);
+        builder.addDoubleProperty("Distance (ft)", this::getDistanceFeet, null);
     }
 }

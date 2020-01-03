@@ -30,15 +30,15 @@ Lasershark::Lasershark(std::shared_ptr<frc::DigitalSource> source)
     frc::SendableRegistry::GetInstance().AddLW(this, "Lasershark", pwmInput.GetFPGAIndex() + 1);
 }
 
-units::meter_t Lasershark::GetDistance()
+units::foot_t Lasershark::GetDistance()
 {
-    return units::meter_t{pwmInput.GetOutput() * 4000 / 1000.0};
+    return units::foot_t{pwmInput.GetOutput() * 4000 / 25.4 / 12.0};
 }
 
 void Lasershark::InitSendable(frc::SendableBuilder &builder)
 {
     builder.SetSmartDashboardType("Lasershark");
-    builder.AddDoubleProperty("Distance",
+    builder.AddDoubleProperty("Distance (ft)",
                               [this] { return this->GetDistance().to<double>(); }, nullptr);
 }
 
