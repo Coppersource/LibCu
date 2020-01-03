@@ -1,35 +1,45 @@
 #include <libcu/lasershark.h>
+#include <frc/DigitalInput.h>
+#include <frc/smartdashboard/SendableRegistry.h>
+#include <frc/smartdashboard/SendableBuilder.h>
 
 namespace libcu
 {
 
-Lasershark::Lasershark(frc::DigitalSource &source)
+Lasershark::Lasershark(int input)
+    : pwmInput{std::make_shared<frc::DigitalInput>(input)}
 {
-    this->pwmInput = new frc::DutyCycle(source);
+    frc::SendableRegistry::GetInstance().AddLW(this, "Lasershark", pwmInput.GetFPGAIndex() + 1);
+}
+
+Lasershark::Lasershark(frc::DigitalSource &source)
+    : pwmInput{source}
+{
+    frc::SendableRegistry::GetInstance().AddLW(this, "Lasershark", pwmInput.GetFPGAIndex() + 1);
 }
 
 Lasershark::Lasershark(frc::DigitalSource *source)
+    : pwmInput{source}
 {
-    this->pwmInput = new frc::DutyCycle(source);
+    frc::SendableRegistry::GetInstance().AddLW(this, "Lasershark", pwmInput.GetFPGAIndex() + 1);
 }
 
 Lasershark::Lasershark(std::shared_ptr<frc::DigitalSource> source)
+    : pwmInput{source}
 {
-    this->pwmInput = new frc::DutyCycle(source);
+    frc::SendableRegistry::GetInstance().AddLW(this, "Lasershark", pwmInput.GetFPGAIndex() + 1);
 }
 
-double Lasershark::GetDistanceFeet()
+units::meter_t Lasershark::GetDistance()
 {
-    return this->pwmInput->GetOutput() * 4000 / 25.4 / 12;
+    return units::meter_t{pwmInput.GetOutput() * 4000 / 1000.0};
 }
 
-double Lasershark::GetDistanceInches()
+void Lasershark::InitSendable(frc::SendableBuilder &builder)
 {
-    return this->pwmInput->GetOutput() * 4000 / 25.4;
+    builder.SetSmartDashboardType("Lasershark");
+    builder.AddDoubleProperty("Distance",
+                              [this] { return this->GetDistance().to<double>(); }, nullptr);
 }
 
-double Lasershark::GetDisctanceCentimeters()
-{
-    return this->pwmInput->GetOutput() * 4000 / 10.0;
-}
 } // namespace libcu
