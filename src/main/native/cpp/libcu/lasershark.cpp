@@ -6,8 +6,8 @@
 namespace libcu
 {
 
-Lasershark::Lasershark(int input)
-    : pwmInput{std::make_shared<frc::DigitalInput>(input)}
+Lasershark::Lasershark(int channel)
+    : pwmInput{std::make_shared<frc::DigitalInput>(channel)}
 {
     frc::SendableRegistry::GetInstance().AddLW(this, "Lasershark", pwmInput.GetFPGAIndex() + 1);
 }
