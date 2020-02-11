@@ -1,3 +1,4 @@
+#pragma once
 #include <frc/DigitalSource.h>
 #include <frc/DutyCycle.h>
 #include <frc/smartdashboard/Sendable.h>
