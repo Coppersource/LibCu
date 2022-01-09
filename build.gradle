@@ -1,11 +1,15 @@
-
 plugins {
   id 'cpp'
   id 'java'
   id 'edu.wpi.first.wpilib.repositories.WPILibRepositoriesPlugin' version '2020.2'
-  id 'edu.wpi.first.NativeUtils' version  '2020.7.2' //'2019.5.15' //'2020.1.0'
-  id 'edu.wpi.first.GradleJni' version '0.10.1'
-  id 'edu.wpi.first.GradleVsCode' version '0.12.0'
+  id 'edu.wpi.first.NativeUtils' version '2022.8.1'
+  id 'edu.wpi.first.GradleJni' version '1.1.0'
+  id 'edu.wpi.first.GradleVsCode' version '1.1.0'
+}
+
+ext {
+  wpilibVersion = '2022.1.1'
+  opencvVersion = '4.5.2-1'
 }
 
 repositories {
@@ -23,13 +27,13 @@ apply from: 'config.gradle'
 
 // Apply Java configuration
 dependencies {
-    implementation 'edu.wpi.first.cscore:cscore-java:2020.+'
-    implementation 'edu.wpi.first.cameraserver:cameraserver-java:2020.+'
-    implementation 'edu.wpi.first.ntcore:ntcore-java:2020.+'
-    implementation 'edu.wpi.first.wpilibj:wpilibj-java:2020.+'
-    implementation 'edu.wpi.first.wpiutil:wpiutil-java:2020.+'
-    implementation 'edu.wpi.first.hal:hal-java:2020.+'
-    implementation 'edu.wpi.first.thirdparty.frc2020.opencv:opencv-java:3.4.7-2'
+    implementation 'edu.wpi.first.cscore:cscore-java:$wpilibVersion
+    implementation 'edu.wpi.first.cameraserver:cameraserver-java:$wpilibVersion'
+    implementation 'edu.wpi.first.ntcore:ntcore-java:$wpilibVersion'
+    implementation 'edu.wpi.first.wpilibj:wpilibj-java:$wpilibVersion'
+    implementation 'edu.wpi.first.wpiutil:wpiutil-java:$wpilibVersion'
+    implementation 'edu.wpi.first.hal:hal-java:$wpilibVersion'
+    implementation 'edu.wpi.first.thirdparty.frc2020.opencv:opencv-java:$opencvVersion'
 }
 
 // Set up exports properly
