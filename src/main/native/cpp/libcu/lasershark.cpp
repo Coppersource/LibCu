@@ -32,14 +32,14 @@ Lasershark::Lasershark(std::shared_ptr<frc::DigitalSource> source)
 
 units::foot_t Lasershark::GetDistance()
 {
-    return units::foot_t{pwmInput.GetOutput() * 4000 / 25.4 / 12.0};
+    return units::meter_t{pwmInput.GetOutput() * 4};
 }
 
 void Lasershark::InitSendable(nt::NTSendableBuilder &builder)
 {
     builder.SetSmartDashboardType("Lasershark");
     builder.AddDoubleProperty("Distance (ft)",
-                              [this] { return this->GetDistance().to<double>(); }, nullptr);
+                              [this] { return this->GetDistance().value(); }, nullptr);
 }
 
 } // namespace libcu
