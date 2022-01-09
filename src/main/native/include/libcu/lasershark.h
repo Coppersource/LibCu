@@ -1,9 +1,15 @@
 #pragma once
+
 #include <frc/DigitalSource.h>
 #include <frc/DutyCycle.h>
-#include <frc/smartdashboard/Sendable.h>
-#include <frc/smartdashboard/SendableHelper.h>
-#include <units/units.h>
+#include <networktables/NTSendable.h>
+#include <units/length.h>
+#include <wpi/sendable/SendableHelper.h>
+
+namespace nt
+{
+    class NTSendableBuilder;
+} // namespace nt
 
 namespace libcu
 {
@@ -26,8 +32,8 @@ namespace libcu
  * speed of sound, yielding superior performance over ultrasonic and infrared
  * sensors.
  */
-class Lasershark : public frc::Sendable,
-                   public frc::SendableHelper<Lasershark>
+class Lasershark : public nt::NTSendable,
+                   public wpi::SendableHelper<Lasershark>
 {
 public:
     /**
@@ -67,7 +73,7 @@ public:
     units::foot_t GetDistance();
 
 protected:
-    void InitSendable(frc::SendableBuilder& builder) override;
+    void InitSendable(nt::NTSendableBuilder& builder) override;
 
 private:
     frc::DutyCycle pwmInput;
