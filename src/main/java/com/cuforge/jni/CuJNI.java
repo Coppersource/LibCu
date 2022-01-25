@@ -3,7 +3,7 @@ package com.cuforge.jni;
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import edu.wpi.first.wpiutil.RuntimeLoader;
+import edu.wpi.first.util.RuntimeLoader;
 
 public class CuJNI {
   static boolean libraryLoaded = false;
