@@ -57,7 +57,7 @@ jobs:
   # roboRIO
   build-roborio:
     runs-on: ubuntu-latest
-    container: wpilib/roborio-cross-ubuntu:2020-18.04
+    container: wpilib/roborio-cross-ubuntu:2022-20.04
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-java@v1
