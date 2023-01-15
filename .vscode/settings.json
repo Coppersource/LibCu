@@ -6,8 +6,5 @@
     "**/.settings": true,
     "**/.factorypath": true
   },
-  "C_Cpp.default.configurationProvider": "vscode-wpilib",
-  "files.associations": {
-    "memory": "cpp"
-  }
+  "C_Cpp.default.configurationProvider": "vscode-wpilib"
 }

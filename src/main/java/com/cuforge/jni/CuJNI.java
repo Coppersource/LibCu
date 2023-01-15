@@ -5,17 +5,33 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import edu.wpi.first.util.RuntimeLoader;
 
+/**
+ * LibCu JNI
+ */
 public class CuJNI {
   static boolean libraryLoaded = false;
   static RuntimeLoader<CuJNI> loader = null;
 
+  /**
+   * Native library extraction helper class.
+   */
   public static class Helper {
     private static AtomicBoolean extractOnStaticLoad = new AtomicBoolean(true);
 
+    /**
+     * Returns true if the native libraries will be extracted upon static load.
+     *
+     * @return Whether to extract the native libraries upon static load.
+     */
     public static boolean getExtractOnStaticLoad() {
       return extractOnStaticLoad.get();
     }
 
+    /**
+     * Sets whether the native libraries will be extracted upon static load.
+     *
+     * @param load Whether to extract.
+     */
     public static void setExtractOnStaticLoad(boolean load) {
       extractOnStaticLoad.set(load);
     }
@@ -47,5 +63,10 @@ public class CuJNI {
     libraryLoaded = true;
   }
 
+  /**
+   * Initializes the JNI library.
+   *
+   * @return The JNI instance handle.
+   */
   public static native int initialize();
 }

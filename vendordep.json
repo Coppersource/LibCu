@@ -1,7 +1,7 @@
 {
     "fileName": "LibCu.json",
     "name": "LibCu",
-    "version": "2022.2.1",
+    "version": "2023.1.1",
     "uuid": "f002471f-3077-469a-8b00-3d5b343e8a68", 
     "mavenUrls": [
         "https://copperforge.cc/files/dev/maven"
@@ -11,14 +11,16 @@
         {
             "groupId": "com.cuforge.libcu",
             "artifactId": "LibCu-cpp",
-            "version": "2022.2.1",
+            "version": "2023.1.1",
             "libName": "Cu",
             "headerClassifier": "headers",
             "sharedLibrary": true,
             "skipInvalidPlatforms": true,
             "binaryPlatforms": [
                 "windowsx86-64",
-                "linuxathena"
+                "linuxx86-64",
+                "linuxathena",
+                "osxuniversal"
             ]
         },
         {
@@ -31,7 +33,9 @@
             "skipInvalidPlatforms": true,
             "binaryPlatforms": [
                 "windowsx86-64",
-                "linuxathena"
+                "linuxx86-64",
+                "linuxathena",
+                "osxuniversal"
             ]
         }
     ],
@@ -39,19 +43,21 @@
         {
             "groupId": "com.cuforge.libcu",
             "artifactId": "LibCu-java",
-            "version": "2022.2.1"
+            "version": "2023.1.1"
         }
     ],
     "jniDependencies": [
         {
             "groupId": "com.cuforge.libcu",
             "artifactId": "LibCu-driver",
-            "version": "2022.2.1",
+            "version": "2023.1.1",
             "isJar": false,
             "skipInvalidPlatforms": true,
             "validPlatforms": [
                 "windowsx86-64",
-                "linuxathena"
+                "linuxx86-64",
+                "linuxathena",
+                "osxuniversal"
             ]
         }
     ]
