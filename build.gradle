@@ -1,21 +1,16 @@
 plugins {
   id 'cpp'
   id 'java'
+  id 'google-test'
   id 'edu.wpi.first.wpilib.repositories.WPILibRepositoriesPlugin' version '2020.2'
-  id 'edu.wpi.first.NativeUtils' version '2022.8.1' 
+  id 'edu.wpi.first.NativeUtils' version '2023.11.1'
   id 'edu.wpi.first.GradleJni' version '1.0.0'
-  id 'edu.wpi.first.GradleVsCode' version '1.1.0'
-}
-
-ext {
-  wpilibVersion = '2022.1.1'
-  opencvVersion = '4.5.2-1'
+  id 'edu.wpi.first.GradleVsCode' version '1.3.0'
 }
 
 repositories {
   mavenCentral()
 }
-
 if (project.hasProperty('releaseMode')) {
   wpilibRepositories.addAllReleaseRepositories(project)
 } else {
@@ -27,13 +22,18 @@ apply from: 'config.gradle'
 
 // Apply Java configuration
 dependencies {
-    implementation "edu.wpi.first.cscore:cscore-java:$wpilibVersion"
-    implementation "edu.wpi.first.cameraserver:cameraserver-java:$wpilibVersion"
-    implementation "edu.wpi.first.ntcore:ntcore-java:$wpilibVersion"
-    implementation "edu.wpi.first.wpilibj:wpilibj-java:$wpilibVersion"
-    implementation "edu.wpi.first.wpiutil:wpiutil-java:$wpilibVersion"
-    implementation "edu.wpi.first.hal:hal-java:$wpilibVersion"
-    implementation "edu.wpi.first.thirdparty.frc2022.opencv:opencv-java:$opencvVersion"
+    implementation 'edu.wpi.first.cscore:cscore-java:2023.+'
+    implementation 'edu.wpi.first.cameraserver:cameraserver-java:2023.+'
+    implementation 'edu.wpi.first.ntcore:ntcore-java:2023.+'
+    implementation 'edu.wpi.first.wpilibj:wpilibj-java:2023.+'
+    implementation 'edu.wpi.first.wpiutil:wpiutil-java:2023.+'
+    implementation 'edu.wpi.first.wpimath:wpimath-java:2023.+'
+    implementation 'edu.wpi.first.hal:hal-java:2023.+'
+    implementation "org.ejml:ejml-simple:0.41"
+    implementation "com.fasterxml.jackson.core:jackson-annotations:2.12.4"
+    implementation "com.fasterxml.jackson.core:jackson-core:2.12.4"
+    implementation "com.fasterxml.jackson.core:jackson-databind:2.12.4"
+    implementation 'edu.wpi.first.thirdparty.frc2023.opencv:opencv-java:4.6.0-2'
 }
 
 // Set up exports properly
@@ -76,8 +76,8 @@ model {
       javaCompileTasks << compileJava
       jniCrossCompileOptions << JniCrossCompileOptions(nativeUtils.wpi.platforms.roborio)
       // Leave these for future proofing
-      jniCrossCompileOptions << JniCrossCompileOptions(nativeUtils.wpi.platforms.raspbian)
-      jniCrossCompileOptions << JniCrossCompileOptions(nativeUtils.wpi.platforms.aarch64bionic)
+      jniCrossCompileOptions << JniCrossCompileOptions(nativeUtils.wpi.platforms.linuxarm32)
+      jniCrossCompileOptions << JniCrossCompileOptions(nativeUtils.wpi.platforms.linuxarm64)
       sources {
         cpp {
           source {
@@ -90,7 +90,34 @@ model {
         }
       }
 
-       nativeUtils.useRequiredLibrary(it, "driver_shared")
+      nativeUtils.useRequiredLibrary(it, "driver_shared")
+    }
+  }
+  testSuites {
+    CuTest {
+        sources.cpp {
+            source {
+                srcDir 'src/test/native/cpp'
+                include '**/*.cpp'
+            }
+        }
+
+        binaries.all {
+          lib library: 'CuDriver', linkage: 'shared'
+        }
+
+        nativeUtils.useRequiredLibrary(it, "wpilib_executable_shared", "googletest_static")
+    }
+
+    CuDriverTest {
+        sources.cpp {
+            source {
+                srcDir 'src/test/driver/cpp'
+                include '**/*.cpp'
+            }
+        }
+
+        nativeUtils.useRequiredLibrary(it, "wpilib_executable_shared", "googletest_static")
     }
   }
 }
@@ -98,5 +125,5 @@ model {
 apply from: 'publish.gradle'
 
 wrapper {
-  gradleVersion '7.3.3'
+  gradleVersion '7.5.1'
 }

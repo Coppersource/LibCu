@@ -51,6 +51,8 @@ public class Lasershark implements Sendable {
 
     /**
      * Get the distance reported by the LiDAR sensor in feet.
+     *
+     * @return The distance reported by the LiDAR sensor in feet.
      */
     public double getDistanceFeet() {
         return this._pwmInput.getOutput() * 4000 / 25.4 / 12;
@@ -58,6 +60,8 @@ public class Lasershark implements Sendable {
 
     /**
      * Get the distance reported by the LiDAR sensor in inches.
+     *
+     * @return The distance reported by the LiDAR sensor in inches.
      */
     public double getDistanceInches() {
         return this._pwmInput.getOutput() * 4000 / 25.4;
@@ -65,6 +69,8 @@ public class Lasershark implements Sendable {
 
     /**
      * Get the distance reported by the LiDAR sensor in centimeters.
+     *
+     * @return The distance reported by the LiDAR sensor in centimeters.
      */
     public double getDistanceCentimeters() {
         return this._pwmInput.getOutput() * 4000 / 10.0;
@@ -72,6 +78,8 @@ public class Lasershark implements Sendable {
 
     /**
      * Get the distance reported by the LiDAR sensor in meters.
+     *
+     * @return The distance reported by the LiDAR sensor in meters.
      */
     public double getDistanceMeters() {
         return this._pwmInput.getOutput() * 4000 / 1000.0;
